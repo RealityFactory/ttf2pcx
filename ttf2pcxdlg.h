@@ -27,6 +27,7 @@ public:
 	void SaveChars(FILE *f, int type);
 
 	CCharacter *chars;
+	TCHAR m_currentdir[512];
 
 // Dialog Data
 	//{{AFX_DATA(Cttf2pcxDlg)
@@ -41,7 +42,6 @@ public:
 	CString	m_size;
 	CString	m_style;
 	CString	m_fonth;
-	TCHAR m_currentdir[512];
 	//}}AFX_DATA
 
 	// ClassWizard generated virtual function overrides

@@ -48,10 +48,9 @@ void CCharacter::Get(CFont *font, int c)
 
 	CFont *oldfont = cdc.SelectObject(font);
 
-	wchar_t s[2] = { c, 0 };
+	char s[2] = { c, 0 };
 
-	CSize size;
-	GetTextExtentPoint32W(cdc.m_hDC, s, 1, &size);
+	CSize size = cdc.GetTextExtent( s, 1 ) ;
 
 	CBitmap *bmp = new CBitmap;
 	bmp->CreateCompatibleBitmap(&cdc, size.cx*2, size.cy);
@@ -59,8 +58,8 @@ void CCharacter::Get(CFont *font, int c)
 	CBitmap *oldbmp = cdc.SelectObject(bmp);
 
 	cdc.FillSolidRect(0, 0, size.cx*2, size.cy, 0);
-	cdc.SetTextColor(0xFFFFFFFF);
-	TextOutW(cdc.m_hDC, 0, 0, s, 1);
+	cdc.SetTextColor(0x00FFFFFF);
+	cdc.TextOut(0, 0, s, 1);
 
 	cdc.SelectObject(oldbmp);
 	cdc.SelectObject(oldfont);
@@ -88,6 +87,7 @@ void CCharacter::Get(CFont *font, int c)
 	}
 
 	done:
+
 	return;
 }
 
